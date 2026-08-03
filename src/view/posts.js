@@ -23,7 +23,7 @@ const renderPosts = (state, elements) => {
     link.rel = 'noopener noreferrer';
     link.dataset.id = post.id;
     link.textContent = post.title;
-    link.classList.add(uiState.visitedPosts.has(post.id) ? 'link-secondary' : 'fw-bold');
+    link.classList.add(uiState.visitedPosts.has(post.id) ? 'fw-normal' : 'fw-bold');
 
     const button = document.createElement('button');
     button.type = 'button';
