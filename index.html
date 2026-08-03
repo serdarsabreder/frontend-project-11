@@ -3,56 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSS Reader</title>
+  <title>RSS Агрегатор</title>
 </head>
 <body class="bg-light">
-  <header class="container pt-3">
-    <div class="row justify-content-end">
-      <div class="col-auto">
-        <div class="dropdown">
-          <button
-            type="button"
-            id="languages-label"
-            class="btn btn-outline-secondary btn-sm dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >Языки</button>
-          <ul class="dropdown-menu">
-            <li><button type="button" class="dropdown-item" data-language="ru">Русский</button></li>
-            <li><button type="button" class="dropdown-item" data-language="en">English</button></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
-  <main class="container py-4">
+  <main class="container py-5">
     <div class="row justify-content-center">
       <div class="col-10 col-md-8 col-lg-6">
-        <h1 class="text-center mb-3" id="page-title">RSS Reader</h1>
-        <p class="text-center text-secondary mb-4" id="tagline"></p>
-        <form class="d-flex gap-2" id="rss-form" novalidate>
-          <label for="url-input" class="visually-hidden">RSS link</label>
-          <input
-            type="url"
-            name="url"
-            id="url-input"
-            class="form-control"
-            placeholder="RSS link"
-            aria-label="RSS link"
-            required
-          >
-          <button type="submit" class="btn btn-primary flex-shrink-0">Add</button>
-        </form>
-        <p class="small mt-2 mb-0" id="feedback"></p>
-        <div class="mt-5">
-          <h2 class="h4" id="feeds-heading">Фиды</h2>
-          <div id="feeds"></div>
-          <h2 class="h4 mt-4" id="posts-heading">Посты</h2>
-          <div id="posts"></div>
-        </div>
+        <section class="bg-dark text-white rounded-3 shadow p-4 p-md-5">
+          <h1 class="text-center mb-3" id="page-title">RSS агрегатор</h1>
+          <p class="text-center text-white-50 mb-4" id="tagline">Начните читать RSS сегодня! Это легко, это красиво.</p>
+          <form class="d-flex gap-2" id="rss-form" novalidate>
+            <label for="url-input" class="visually-hidden">Ссылка RSS</label>
+            <input
+              type="url"
+              name="url"
+              id="url-input"
+              class="form-control form-control-lg"
+              placeholder="Ссылка RSS"
+              aria-label="Ссылка RSS"
+              required
+            >
+            <button type="submit" class="btn btn-light btn-lg flex-shrink-0">Добавить</button>
+          </form>
+          <p class="text-center small text-white-50 mt-3 mb-0">Пример: https://lorem-rss.hexlet.app/feed</p>
+        </section>
+        <p class="small mt-3 mb-0" id="feedback"></p>
+        <div class="mt-5" id="feeds"></div>
+        <div class="mt-4" id="posts"></div>
       </div>
     </div>
   </main>
+  <footer class="text-center py-4 text-secondary small">
+    created by <a href="https://hexlet.io" target="_blank" rel="noopener noreferrer">Hexlet</a>
+  </footer>
   <div
     class="modal fade"
     id="modal"

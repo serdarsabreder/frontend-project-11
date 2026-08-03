@@ -15,10 +15,6 @@ const getElements = () => ({
   feedsContainer: document.querySelector('#feeds'),
   postsContainer: document.querySelector('#posts'),
   tagline: document.querySelector('#tagline'),
-  feedsHeading: document.querySelector('#feeds-heading'),
-  postsHeading: document.querySelector('#posts-heading'),
-  languagesDropdownLabel: document.querySelector('#languages-label'),
-  languageButtons: document.querySelectorAll('[data-language]'),
   modal: document.querySelector('#modal'),
   modalTitle: document.querySelector('#modal-title'),
   modalBody: document.querySelector('#modal-body'),
@@ -39,7 +35,7 @@ const initApp = () => {
   i18next.init({ resources, lng: 'ru', fallbackLng: 'ru' })
     .then(() => {
       view.renderAll(watchedState, elements);
-      initController(watchedState, elements, view);
+      initController(watchedState, elements);
       initUpdater(watchedState, elements);
     });
 };

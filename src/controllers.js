@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as yup from 'yup';
-import i18next from 'i18next';
 import fetchFeed from './rss.js';
 import { uniqueId } from './utils.js';
 
@@ -13,9 +12,9 @@ const buildErrorMessage = (error) => {
   return error.message;
 };
 
-const initController = (state, elements, view) => {
+const initController = (state, elements) => {
   const {
-    form, input, postsContainer, languageButtons,
+    form, input, postsContainer,
   } = elements;
 
   const openModal = (post) => {
@@ -93,15 +92,6 @@ const initController = (state, elements, view) => {
   form.addEventListener('submit', handleSubmit);
   input.addEventListener('input', handleInput);
   postsContainer.addEventListener('click', handlePostsClick);
-
-  languageButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const { language } = button.dataset;
-      i18next.changeLanguage(language).then(() => {
-        view.renderAll(state, elements);
-      });
-    });
-  });
 };
 
 export default initController;

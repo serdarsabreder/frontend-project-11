@@ -1,8 +1,19 @@
+import i18next from 'i18next';
+
 const renderFeeds = (feeds, elements) => {
   const { feedsContainer } = elements;
 
+  if (feeds.length === 0) {
+    feedsContainer.replaceChildren();
+    return;
+  }
+
+  const heading = document.createElement('h2');
+  heading.classList.add('h4');
+  heading.textContent = i18next.t('feeds');
+
   const list = document.createElement('ul');
-  list.classList.add('list-group', 'mb-5');
+  list.classList.add('list-group');
 
   feeds.forEach((feed) => {
     const li = document.createElement('li');
@@ -20,7 +31,7 @@ const renderFeeds = (feeds, elements) => {
     list.append(li);
   });
 
-  feedsContainer.replaceChildren(list);
+  feedsContainer.replaceChildren(heading, list);
 };
 
 export default renderFeeds;

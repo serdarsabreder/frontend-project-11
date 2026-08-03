@@ -4,6 +4,15 @@ const renderPosts = (state, elements) => {
   const { postsContainer } = elements;
   const { posts, uiState } = state;
 
+  if (posts.length === 0) {
+    postsContainer.replaceChildren();
+    return;
+  }
+
+  const heading = document.createElement('h2');
+  heading.classList.add('h4');
+  heading.textContent = i18next.t('posts');
+
   const list = document.createElement('ul');
   list.classList.add('list-group');
 
@@ -35,7 +44,7 @@ const renderPosts = (state, elements) => {
     list.append(li);
   });
 
-  postsContainer.replaceChildren(list);
+  postsContainer.replaceChildren(heading, list);
 };
 
 export default renderPosts;
