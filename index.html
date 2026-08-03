@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSS Reader</title>
+</head>
+<body class="bg-light">
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-10 col-md-8 col-lg-6">
+        <h1 class="text-center mb-3">RSS Reader</h1>
+        <p class="text-center text-secondary mb-4">Start reading RSS today! It is easy, it is nicely.</p>
+        <form class="d-flex gap-2" id="rss-form" novalidate>
+          <label for="url-input" class="visually-hidden">RSS link</label>
+          <input
+            type="url"
+            name="url"
+            id="url-input"
+            class="form-control"
+            placeholder="Enter the RSS link"
+            aria-label="RSS link"
+            required
+          >
+          <button type="submit" class="btn btn-primary flex-shrink-0">Add</button>
+        </form>
+        <p class="text-secondary small mt-2 mb-0" id="feedback"></p>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
