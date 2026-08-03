@@ -34,6 +34,7 @@ export default [
       'no-console': 'off',
       'no-param-reassign': ['error', { props: false }],
       'no-underscore-dangle': 'off',
+      'no-template-curly-in-string': 'off',
     },
   },
   {

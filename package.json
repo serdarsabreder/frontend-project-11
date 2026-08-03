@@ -22,7 +22,11 @@
   "homepage": "https://github.com/serdarsabreder/frontend-project-11#readme",
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3"
+    "axios": "^1.19.0",
+    "bootstrap": "^5.3.3",
+    "i18next": "^26.3.6",
+    "on-change": "^5.0.1",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
