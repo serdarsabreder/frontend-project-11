@@ -7,6 +7,7 @@ import initUpdater from './updater.js';
 import * as view from './view/index.js';
 
 const getElements = () => ({
+  title: document.querySelector('#page-title'),
   form: document.querySelector('#rss-form'),
   input: document.querySelector('#url-input'),
   button: document.querySelector('#rss-form button[type="submit"]'),

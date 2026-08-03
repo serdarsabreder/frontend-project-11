@@ -1,11 +1,12 @@
 export default {
   translation: {
+    title: 'RSS агрегатор',
     languages: 'Языки',
     feeds: 'Фиды',
     posts: 'Посты',
     url: 'Ссылка RSS',
     submit: 'Добавить',
-    tagline: 'Читайте RSS-ленты удобно!',
+    tagline: 'Начните читать RSS сегодня! Это легко, это красиво.',
     feedback: {
       invalidUrl: 'Ссылка должна быть валидным URL',
       exists: 'RSS уже существует',

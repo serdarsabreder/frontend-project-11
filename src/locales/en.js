@@ -1,5 +1,6 @@
 export default {
   translation: {
+    title: 'RSS Reader',
     languages: 'Languages',
     feeds: 'Feeds',
     posts: 'Posts',
