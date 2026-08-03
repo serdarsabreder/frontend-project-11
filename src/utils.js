@@ -6,7 +6,7 @@ const uniqueId = () => {
 
 const isAllOriginsUrl = (url) => {
   try {
-    return new URL(url).host === 'allorigins.win';
+    return new URL(url).host === 'allorigins.hexlet.app';
   } catch {
     return false;
   }
