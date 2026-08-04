@@ -5,8 +5,8 @@ import { uniqueId } from './utils.js';
 
 const buildSchema = (feeds) => yup.string()
   .trim()
-  .required('required')
-  .url('invalidUrl')
+  .required()
+  .url()
   .notOneOf(feeds.map((feed) => feed.url), 'exists');
 
 const buildErrorMessage = (error) => {
