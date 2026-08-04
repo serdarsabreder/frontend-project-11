@@ -5,37 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RSS Агрегатор</title>
 </head>
-<body class="bg-light">
-  <main class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-10 col-md-8 col-lg-6">
-        <section class="bg-dark text-white rounded-3 shadow p-4 p-md-5">
-          <h1 class="text-center mb-3" id="page-title">RSS агрегатор</h1>
-          <p class="text-center text-white-50 mb-4" id="tagline">Начните читать RSS сегодня! Это легко, это красиво.</p>
-          <form class="d-flex gap-2" id="rss-form" novalidate>
-            <label for="url-input" class="visually-hidden" id="url-label">Ссылка RSS</label>
-            <input
-              type="url"
-              name="url"
-              id="url-input"
-              class="form-control form-control-lg"
-              placeholder="Ссылка RSS"
-              aria-label="Ссылка RSS"
-              required
-            >
-            <button type="submit" class="btn btn-light btn-lg flex-shrink-0">Добавить</button>
-          </form>
-          <p class="text-center small text-white-50 mt-3 mb-0">Пример: https://lorem-rss.hexlet.app/feed</p>
+<body>
+  <header class="hero-banner">
+    <div class="container hero-content">
+      <h1 class="hero-title" id="page-title">RSS агрегатор</h1>
+      <p class="hero-subtitle" id="tagline">Начните читать RSS сегодня! Это легко, это красиво.</p>
+
+      <form class="input-group" id="rss-form" novalidate>
+        <label for="url-input" class="visually-hidden" id="url-label">Ссылка RSS</label>
+        <input
+          type="url"
+          name="url"
+          id="url-input"
+          class="rss-input"
+          placeholder="Ссылка RSS"
+          aria-label="Ссылка RSS"
+          required
+        >
+        <button type="submit" class="btn-add">Добавить</button>
+      </form>
+
+      <p class="example-link">
+        Пример: <a href="https://lorem-rss.hexlet.app/feed" target="_blank" rel="noopener noreferrer">https://lorem-rss.hexlet.app/feed</a>
+      </p>
+      <p class="status-message" id="feedback"></p>
+    </div>
+  </header>
+
+  <main class="content-wrapper">
+    <div class="container">
+      <div class="layout-grid">
+        <section class="section-posts">
+          <div id="posts"></div>
         </section>
-        <p class="small mt-3 mb-0" id="feedback"></p>
-        <div class="mt-5" id="feeds"></div>
-        <div class="mt-4" id="posts"></div>
+        <section class="section-feeds">
+          <div id="feeds"></div>
+        </section>
       </div>
     </div>
   </main>
-  <footer class="text-center py-4 text-secondary small">
-    created by <a href="https://hexlet.io" target="_blank" rel="noopener noreferrer">Hexlet</a>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-text">
+        created by <a href="https://hexlet.io" target="_blank" rel="noopener noreferrer" class="footer-link">Hexlet</a>
+      </p>
+    </div>
   </footer>
+
   <div
     class="modal fade"
     id="modal"

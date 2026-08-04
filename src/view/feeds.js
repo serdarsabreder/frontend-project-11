@@ -9,26 +9,30 @@ const renderFeeds = (feeds, elements) => {
   }
 
   const heading = document.createElement('h2');
-  heading.classList.add('h4');
+  heading.classList.add('section-title');
   heading.textContent = i18next.t('feeds');
 
   const list = document.createElement('ul');
-  list.classList.add('list-group');
+  list.classList.add('feeds-list');
 
   feeds.forEach((feed) => {
-    const li = document.createElement('li');
-    li.classList.add('list-group-item');
+    const card = document.createElement('li');
+    card.classList.add('feed-card');
+
+    const info = document.createElement('div');
+    info.classList.add('feed-info');
 
     const title = document.createElement('h3');
-    title.classList.add('h6', 'm-0');
+    title.classList.add('feed-title');
     title.textContent = feed.title;
 
     const description = document.createElement('p');
-    description.classList.add('m-0', 'small', 'text-black-50');
+    description.classList.add('feed-desc');
     description.textContent = feed.description;
 
-    li.append(title, description);
-    list.append(li);
+    info.append(title, description);
+    card.append(info);
+    list.append(card);
   });
 
   feedsContainer.replaceChildren(heading, list);

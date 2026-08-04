@@ -10,21 +10,15 @@ const renderPosts = (state, elements) => {
   }
 
   const heading = document.createElement('h2');
-  heading.classList.add('h4');
+  heading.classList.add('section-title');
   heading.textContent = i18next.t('posts');
 
   const list = document.createElement('ul');
-  list.classList.add('list-group');
+  list.classList.add('posts-list');
 
   posts.forEach((post) => {
     const li = document.createElement('li');
-    li.classList.add(
-      'list-group-item',
-      'd-flex',
-      'justify-content-between',
-      'align-items-start',
-      'gap-2',
-    );
+    li.classList.add('post-item');
 
     const link = document.createElement('a');
     link.href = post.link;
@@ -32,12 +26,13 @@ const renderPosts = (state, elements) => {
     link.rel = 'noopener noreferrer';
     link.dataset.id = post.id;
     link.textContent = post.title;
+    link.classList.add('post-link');
     link.classList.add(Object.hasOwn(uiState.visitedPosts, post.id) ? 'fw-normal' : 'fw-bold');
 
     const button = document.createElement('button');
     button.type = 'button';
     button.dataset.id = post.id;
-    button.classList.add('btn', 'btn-outline-primary', 'btn-sm', 'flex-shrink-0');
+    button.classList.add('btn-view');
     button.textContent = i18next.t('post.preview');
 
     li.append(link, button);
