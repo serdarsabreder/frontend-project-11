@@ -39,12 +39,6 @@ Automated tests verify the app’s behavior in key scenarios:
 - The `README.md` file includes **SonarQube** and **GitHub Actions** badges.
 - The repository contains no unnecessary files or directories (temporary files, etc.). All irrelevant items are added to `.gitignore`.
 
----
-
-## Services
-
-- The **GitHub Actions** badge is green — checks must pass.
-- Coding standards are verified via GitHub Actions.
 
 ---
 
