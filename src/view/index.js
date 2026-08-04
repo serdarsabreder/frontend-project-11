@@ -1,3 +1,4 @@
+import { subscribe } from 'valtio/vanilla';
 import renderFeeds from './feeds.js';
 import renderPosts from './posts.js';
 import renderFeedback from './feedback.js';
@@ -26,6 +27,14 @@ const render = (state, elements, path) => {
   }
 };
 
+const initView = (state, elements) => {
+  subscribe(state, (ops) => {
+    ops.forEach((op) => {
+      render(state, elements, op[1].join('.'));
+    });
+  });
+};
+
 const renderAll = (state, elements) => {
   renderStaticTexts(elements);
   renderFeeds(state.feeds, elements);
@@ -33,4 +42,4 @@ const renderAll = (state, elements) => {
   renderFeedback(state, elements);
 };
 
-export { render, renderAll };
+export { initView, renderAll };

@@ -8,6 +8,7 @@ export default {
     submit: 'Добавить',
     tagline: 'Начните читать RSS сегодня! Это легко, это красиво.',
     feedback: {
+      required: 'Не должно быть пустым',
       invalidUrl: 'Ссылка должна быть валидным URL',
       exists: 'RSS уже существует',
       success: 'RSS успешно загружен',

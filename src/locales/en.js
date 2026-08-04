@@ -4,10 +4,11 @@ export default {
     languages: 'Languages',
     feeds: 'Feeds',
     posts: 'Posts',
-    url: 'RSS link',
+    url: 'RSS Link',
     submit: 'Add',
     tagline: 'Start reading RSS today! It is easy, it is nicely.',
     feedback: {
+      required: 'Must not be empty',
       invalidUrl: 'Link must be a valid URL',
       exists: 'RSS already exists',
       success: 'RSS loaded successfully',

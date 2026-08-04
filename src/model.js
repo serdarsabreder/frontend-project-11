@@ -1,8 +1,12 @@
-const initState = () => ({
+import { proxy, unstable_enableOp as enableOpTracking } from 'valtio/vanilla';
+
+enableOpTracking(true);
+
+const initState = () => proxy({
   feeds: [],
   posts: [],
   uiState: {
-    visitedPosts: new Set(),
+    visitedPosts: {},
     modal: null,
   },
   error: null,

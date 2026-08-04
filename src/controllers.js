@@ -3,7 +3,11 @@ import * as yup from 'yup';
 import fetchFeed from './rss.js';
 import { uniqueId } from './utils.js';
 
-const schema = yup.string().trim().required('invalidUrl').url('invalidUrl');
+const buildSchema = (feeds) => yup.string()
+  .trim()
+  .required('required')
+  .url('invalidUrl')
+  .notOneOf(feeds.map((feed) => feed.url), 'exists');
 
 const buildErrorMessage = (error) => {
   if (axios.isAxiosError(error)) {
@@ -18,51 +22,53 @@ const initController = (state, elements) => {
   } = elements;
 
   const openModal = (post) => {
-    state.uiState.visitedPosts.add(post.id);
+    state.uiState.visitedPosts[post.id] = true;
     state.uiState.modal = post;
+  };
+
+  const loadFeed = (url) => {
+    state.processState = 'loading';
+    return fetchFeed(url);
+  };
+
+  const handleError = (error) => {
+    state.error = buildErrorMessage(error);
+    state.processState = 'failed';
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     state.error = null;
+    state.processState = 'filling';
 
-    const formData = new FormData(form);
-    const url = formData.get('url').trim();
+    const url = new FormData(form).get('url').trim();
 
-    schema.validate(url)
-      .then(() => {
-        const isExists = state.feeds.some((feed) => feed.url === url);
-        if (isExists) {
-          throw new Error('exists');
-        }
-      })
-      .then(() => {
-        state.processState = 'loading';
-        return fetchFeed(url);
-      })
-      .then((feed) => {
-        state.processState = 'parsing';
-        const feedId = uniqueId();
-        state.feeds.push({
-          id: feedId,
-          title: feed.title,
-          description: feed.description,
-          url,
-        });
-        const newPosts = feed.items.map((item) => ({
-          ...item,
-          id: uniqueId(),
-          feedId,
-        }));
-        state.posts.push(...newPosts);
-        state.processState = 'succeeded';
-        form.reset();
-        input.focus();
-      })
-      .catch((error) => {
-        state.error = buildErrorMessage(error);
-        state.processState = 'failed';
+    const handleSuccess = (feed) => {
+      state.processState = 'parsing';
+      const feedId = uniqueId();
+
+      state.feeds.push({
+        id: feedId,
+        title: feed.title,
+        description: feed.description,
+        url,
       });
+      state.posts.push(...feed.items.map((item) => ({
+        ...item,
+        id: uniqueId(),
+        feedId,
+      })));
+
+      state.processState = 'succeeded';
+      form.reset();
+      input.disabled = false;
+      input.focus();
+    };
+
+    buildSchema(state.feeds).validate(url)
+      .then(loadFeed)
+      .then(handleSuccess)
+      .catch(handleError);
   };
 
   const handlePostsClick = (event) => {

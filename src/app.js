@@ -1,13 +1,13 @@
 import i18next from 'i18next';
-import onChange from 'on-change';
 import resources from './locales/index.js';
 import initState from './model.js';
 import initController from './controllers.js';
 import initUpdater from './updater.js';
-import * as view from './view/index.js';
+import { initView, renderAll } from './view/index.js';
 
 const getElements = () => ({
   title: document.querySelector('#page-title'),
+  label: document.querySelector('#url-label'),
   form: document.querySelector('#rss-form'),
   input: document.querySelector('#url-input'),
   button: document.querySelector('#rss-form button[type="submit"]'),
@@ -28,15 +28,13 @@ const initApp = () => {
   const state = initState();
   const elements = getElements();
 
-  const watchedState = onChange(state, (path) => {
-    view.render(watchedState, elements, path);
-  });
+  initView(state, elements);
 
-  i18next.init({ resources, lng: 'ru', fallbackLng: 'ru' })
+  i18next.init({ resources, lng: 'en', fallbackLng: 'en' })
     .then(() => {
-      view.renderAll(watchedState, elements);
-      initController(watchedState, elements);
-      initUpdater(watchedState, elements);
+      renderAll(state, elements);
+      initController(state, elements);
+      initUpdater(state, elements);
     });
 };
 
