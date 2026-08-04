@@ -30,7 +30,7 @@ const initApp = () => {
 
   initView(state, elements);
 
-  i18next.init({ resources, lng: 'en', fallbackLng: 'en' })
+  i18next.init({ resources, lng: 'ru', fallbackLng: 'ru' })
     .then(() => {
       renderAll(state, elements);
       initController(state, elements);
