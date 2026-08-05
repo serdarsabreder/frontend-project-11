@@ -12,6 +12,7 @@ const getElements = () => ({
   input: document.querySelector('#url-input'),
   button: document.querySelector('#rss-form button[type="submit"]'),
   feedback: document.querySelector('#feedback'),
+  errorIcon: document.querySelector('#input-error-icon'),
   feedsContainer: document.querySelector('#feeds'),
   postsContainer: document.querySelector('#posts'),
   tagline: document.querySelector('#tagline'),

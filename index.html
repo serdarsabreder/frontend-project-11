@@ -6,52 +6,51 @@
   <title>RSS Агрегатор</title>
 </head>
 <body>
-  <header class="hero-banner">
-    <div class="container hero-content">
-      <h1 class="hero-title" id="page-title">RSS агрегатор</h1>
-      <p class="hero-subtitle" id="tagline">Начните читать RSS сегодня! Это легко, это красиво.</p>
+  <div class="rss-app">
+    <header>
+      <h1 id="page-title">RSS агрегатор</h1>
+      <p class="subtitle" id="tagline">Начните читать RSS сегодня! Это легко, это красиво.</p>
+    </header>
 
-      <form class="input-group" id="rss-form" novalidate>
-        <label for="url-input" class="visually-hidden" id="url-label">Ссылка RSS</label>
+    <form class="input-group" id="rss-form" novalidate>
+      <label for="url-input" class="visually-hidden" id="url-label">Ссылка RSS</label>
+      <div class="input-wrapper">
         <input
-          type="url"
+          type="text"
           name="url"
           id="url-input"
-          class="rss-input"
           placeholder="Ссылка RSS"
           aria-label="Ссылка RSS"
+          autocomplete="off"
           required
         >
-        <button type="submit" class="btn-add">Добавить</button>
-      </form>
+        <span class="input-error-icon" id="input-error-icon">!</span>
+      </div>
+      <button type="submit" id="submit-button">Добавить</button>
+    </form>
 
-      <p class="example-link">
-        Пример: <a href="https://lorem-rss.hexlet.app/feed" target="_blank" rel="noopener noreferrer">https://lorem-rss.hexlet.app/feed</a>
-      </p>
-      <p class="status-message" id="feedback"></p>
-    </div>
-  </header>
+    <span class="example-link">
+      Пример: <a href="https://lorem-rss.hexlet.app/feed" target="_blank" rel="noopener noreferrer">https://lorem-rss.hexlet.app/feed</a>
+    </span>
+    <p class="status-message" id="feedback"></p>
 
-  <main class="content-wrapper">
-    <div class="container">
+    <main class="content-wrapper">
       <div class="layout-grid">
-        <section class="section-posts">
+        <section>
           <div id="posts"></div>
         </section>
-        <section class="section-feeds">
+        <section>
           <div id="feeds"></div>
         </section>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="site-footer">
-    <div class="container">
+    <footer class="site-footer">
       <p class="footer-text">
         created by <a href="https://hexlet.io" target="_blank" rel="noopener noreferrer" class="footer-link">Hexlet</a>
       </p>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
   <div
     class="modal fade"
@@ -65,7 +64,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal-title"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="modal-body"></div>
         <div class="modal-footer">
@@ -81,6 +80,7 @@
       </div>
     </div>
   </div>
+
   <div class="toast-container position-fixed top-0 end-0 p-3">
     <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
       <div class="toast-header">
