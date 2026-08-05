@@ -12,11 +12,11 @@ export default {
       invalidUrl: 'Link must be a valid URL',
       exists: 'RSS already exists',
       success: 'RSS loaded successfully',
-      noRss: 'Resource does not contain valid RSS',
+      noRss: 'Resource does not contain a valid RSS',
       network: 'Network error',
     },
     post: {
-      preview: 'Preview',
+      preview: 'View',
       openFullArticle: 'Read full article',
       close: 'Close',
     },
